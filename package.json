@@ -1,0 +1,26 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Brian Casillas",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.2",
+    "nodemon": "^2.0.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Briancasillas17/Social-Network-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Briancasillas17/Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/Briancasillas17/Social-Network-API#readme"
+}
