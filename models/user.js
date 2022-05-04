@@ -1,55 +1,46 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const moment = require('moment');
 
-const PizzaSchema = new Schema(
-  {
-    pizzaName: {
-      type: String,
-      required: true,
-      trim: true
+const UserSchema = new Schema(
+    {
+        username: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        email: {
+            type: String,
+            required: true,
+            trim: true,
+            unique: true,
+            match: [/.+@.+\..+/, "Needs to be valid email"],
+        },
+        thoughts:[
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Thought"
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ]
     },
-    createdBy: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: createdAtVal => dateFormat(createdAtVal)
-    },
-    size: {
-      type: String,
-      required: true,
-      enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
-      default: 'Large'
-    },
-    toppings: [],
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
-      }
-    ]
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true
-    },
-    // prevents virtuals from creating duplicate of _id as `id`
-    id: false
-  }
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
+    }
 );
 
-// get total count of comments and replies on retrieval
-PizzaSchema.virtual('commentCount').get(function() {
-  return this.comments.reduce(
-    (total, comment) => total + comment.replies.length + 1,
-    0
-  );
+UserSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
 });
 
-const Pizza = model('Pizza', PizzaSchema);
+const User = model("User", UserSchema);
 
-module.exports = Pizza;
+module.exports = User;
