@@ -37,3 +37,10 @@ Plus, users are able to add, update, and delete reactions to other thoughts, as 
 * /api/users/friends
 * /api/thoughts
 * /api/thoughts/reactions
+
+
+  Contact me at 
+
+  Email: briancasillas67@yahoo.com
+
+  GitHub: https://github.com/briancasillas17
