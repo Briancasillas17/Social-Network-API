@@ -22,7 +22,6 @@ Plus, users are able to add, update, and delete reactions to other thoughts, as 
 * Node.JS
 * Javascript
 * HTML
-* CSS
 
 ## Video Walkthrough
 
